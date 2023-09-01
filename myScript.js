@@ -1,6 +1,12 @@
 // randomly returns ‘Rock’, ‘Paper’ or ‘Scissors’ to make the computer’s play
 function getComputerChoice() {
-    // return "rock" "paper" or "scissors";
+    const textArray = [
+        'Rock',
+        'Paper',
+        'Scissors'
+    ];
+    const randomNumber = Math.floor(Math.random()*textArray.length);
+    return textArray[randomNumber];
 }
 
 console.log(getComputerChoice());
