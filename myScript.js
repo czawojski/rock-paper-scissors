@@ -22,22 +22,22 @@ playerSelection = playerSelection.toLowerCase();
 // return a string that declares the winner of the round like so: "You Lose! Paper beats Rock" 
 function playRound(playerSelection, computerSelection) {
     let result;
-    if (playerSelection === 'rock' || computerSelection === 'paper') {
+    if (playerSelection === 'rock' && computerSelection === 'paper') {
         result = 'You lose! Paper covers rock.';
     }
-    else if (playerSelection === 'rock' || computerSelection === 'scissors') {
+    else if (playerSelection === 'rock' && computerSelection === 'scissors') {
         result = 'You win! Rock crushes scissors.';
     }
-    else if (playerSelection === 'paper' || computerSelection === 'rock') {
+    else if (playerSelection === 'paper' && computerSelection === 'rock') {
         result = 'You win! Paper covers rock.';
     }
-    else if (playerSelection === 'paper' || computerSelection === 'scissors') {
+    else if (playerSelection === 'paper' && computerSelection === 'scissors') {
         result = 'You lose! Scissors cut paper.';
     }
-    else if (playerSelection === 'scissors' || computerSelection === 'rock') {
+    else if (playerSelection === 'scissors' && computerSelection === 'rock') {
         result = 'You lose! Rock crushes scissors.';
     }
-    else if (playerSelection === 'scissors' || computerSelection === 'paper') {
+    else if (playerSelection === 'scissors' && computerSelection === 'paper') {
         result = 'You win! Scissors cut paper.';
     }
     else {
