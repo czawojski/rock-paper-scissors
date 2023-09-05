@@ -13,6 +13,10 @@ function getComputerChoice() {
 
 // let playerselection ... through ... playerSelection.toLowerCase works HERE
 
+// worked yesterday without these declarations, but won't work today without them:
+let playerSelection;
+let computerSelection;
+
 // plays a single round of Rock Paper Scissors -- two parameters - the playerSelection and computerSelection
 
 // return a string that declares the winner of the round like so: "You Lose! Paper beats Rock" 
@@ -24,7 +28,7 @@ function playRound(playerSelection, computerSelection) {
     let result;
     if (playerSelection != null) {
         if (playerSelection === 'rock' && computerSelection === 'paper') {
-        result = 'You lose! Paper covers rock.';
+            result = 'You lose! Paper covers rock.';
         }
         else if (playerSelection === 'rock' && computerSelection === 'scissors') {
             result = 'You win! Rock crushes scissors.';
@@ -55,3 +59,12 @@ function game() {
     }
 }
     game();
+
+    // NEXT STEP: learn how to keep score
+    
+    // let score = 0;
+    // if string.includes("win") {
+        // score++;
+    // }
+    // return score;
+    // console.log(score);
