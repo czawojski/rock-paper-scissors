@@ -62,23 +62,28 @@ function playRound(playerSelection, computerSelection) {
 }
 
 // Use the previous function inside of this one to play a 5 round game that keeps score and reports a winner or loser at the end.
-function game() {
+function playGame() {
     for (let i = 0; i < 5; i++) {
         let x = playRound(playerSelection, computerSelection);
         console.log(x);
     }
 }
 
-    game();
+    playGame();
 
     console.log('Your score: ' + playerScore);
     console.log('Computer score: ' + computerScore);
 
-    // NEXT STEP: learn how to keep score
-    
-    // let score = 0;
-    // if string.includes("win") {
-        // score++;
-    // }
-    // return score;
-    // console.log(score);
+    declareWinner();
+
+    function declareWinner() {
+        if (playerScore > computerScore) {
+            return 'You won the game!';
+        }
+        else if (computerScore > playerScore) {
+            return 'You lost. Try again.';
+        }
+        else {
+            return 'Tie game.';
+        }
+    }
