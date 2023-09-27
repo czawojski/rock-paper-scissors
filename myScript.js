@@ -1,7 +1,6 @@
 let playerScore = 0;
 let computerScore = 0;
 
-// randomly returns ‘Rock’, ‘Paper’ or ‘Scissors’ to make the computer’s play
 function getComputerChoice() {
     const textArray = [
         'rock',
@@ -12,78 +11,85 @@ function getComputerChoice() {
     return textArray[randomNumber];
 }
 
-// Make your function’s playerSelection parameter case-insensitive (so users can input rock, ROCK, RocK or any other variation).
-
-// let playerselection ... through ... playerSelection.toLowerCase works HERE
-
-// worked yesterday without these declarations, but won't work today without them:
 let playerSelection;
 let computerSelection;
 
-// plays a single round of Rock Paper Scissors -- two parameters - the playerSelection and computerSelection
+document.querySelectorAll("button").forEach(occurence => {
+    let id = occurence.getAttribute('id');
+    occurence.addEventListener("click", function playRound(playerSelection, computerSelection) {
+        if (playerScore < 5 && computerScore < 5) {
+            if (id == "rock") {
+                playerSelection = 'rock';
+            }
+            if (id == "paper") {
+                playerSelection = 'paper';
+            }
+            if (id == "scissors") {
+                playerSelection = 'scissors';
+            }
 
-// return a string that declares the winner of the round like so: "You Lose! Paper beats Rock" 
-function playRound(playerSelection, computerSelection) {
-    playerSelection = prompt("Choose one: rock, paper, scissors.");
-    playerSelection = playerSelection.toLowerCase();
-    computerSelection = getComputerChoice();
-    console.log(computerSelection);
-    // let result;
-    if (playerSelection != null) {
-        if (playerSelection === 'rock' && computerSelection === 'paper') {
-            computerScore++;
-            return 'You lose! Paper covers rock.'
+        console.log("Player: " + playerSelection);
+        computerSelection = getComputerChoice();
+        console.log("Computer: " + computerSelection);
+
+            if (playerSelection === 'rock' && computerSelection === 'paper') {
+                computerScore++;
+                document.getElementById("result").innerHTML = "You lose! Paper covers rock.";
+            }
+            else if (playerSelection === 'rock' && computerSelection === 'scissors') {
+                playerScore++;
+                document.getElementById("result").innerHTML = "You win! Rock crushes scissors.";
+            }
+            else if (playerSelection === 'paper' && computerSelection === 'rock') {
+                playerScore++;
+                document.getElementById("result").innerHTML = "You win! Paper covers rock.";
+            }
+            else if (playerSelection === 'paper' && computerSelection === 'scissors') {
+                computerScore++;
+                document.getElementById("result").innerHTML = "You lose! Scissors cut paper.";
+            }
+            else if (playerSelection === 'scissors' && computerSelection === 'rock') {
+                computerScore++;
+                document.getElementById("result").innerHTML = "You lose! Rock crushes scissors.";
+            }
+            else if (playerSelection === 'scissors' && computerSelection === 'paper') {
+                playerScore++;
+                document.getElementById("result").innerHTML = "You win! Scissors cut paper.";
+            }
+            else if (playerSelection === computerSelection) {
+                document.getElementById("result").innerHTML = "Tie! No winner here.";
+            }
+            document.getElementById("playerScore").innerHTML = "Your score: " + playerScore;
+            document.getElementById("computerScore").innerHTML = "Computer's score: " + computerScore;
         }
-        else if (playerSelection === 'rock' && computerSelection === 'scissors') {
-            playerScore++;
-            return 'You win! Rock crushes scissors.'
+        else if (playerScore === 5) {
+            document.getElementById("result").innerHTML = "YOU WIN THE GAME!";
         }
-        else if (playerSelection === 'paper' && computerSelection === 'rock') {
-            playerScore++;
-            return 'You win! Paper covers rock.'
+        else if (computerScore === 5) {
+            document.getElementById("result").innerHTML = "GAME OVER. You lose.";
         }
-        else if (playerSelection === 'paper' && computerSelection === 'scissors') {
-            computerScore++;
-            return 'You lose! Scissors cut paper.'
-        }
-        else if (playerSelection === 'scissors' && computerSelection === 'rock') {
-            computerScore++;
-            return 'You lose! Rock crushes scissors.'
-        }
-        else if (playerSelection === 'scissors' && computerSelection === 'paper') {
-            playerScore++;
-            return 'You win! Scissors cut paper.'
-        }
-        else if (playerSelection === computerSelection) {
-            return 'Tie! No winner here.'
-        }
-        // return result;
-    }
-}
+        });
+    });
+
 
 // Use the previous function inside of this one to play a 5 round game that keeps score and reports a winner or loser at the end.
-function playGame() {
-    for (let i = 0; i < 5; i++) {
-        let x = playRound(playerSelection, computerSelection);
-        console.log(x);
-    }
-}
+// v.2 -- For now, remove the logic that plays exactly five rounds.
+// function playGame() {
+    // for (let i = 0; i < 5; i++) {
+        // let x = playRound(playerSelection, computerSelection);
+        // console.log(x);
+    // }
+// }
 
-    playGame();
+    // playGame();
 
-    console.log('Your score: ' + playerScore);
-    console.log('Computer score: ' + computerScore);
-
-    declareWinner();
+    // declareWinner();
 
     function declareWinner() {
-        if (playerScore > computerScore) {
+        if (playerScore == 5) {
             return 'You won the game!';
         }
-        else if (computerScore > playerScore) {
+        else if (computerScore == 5) {
             return 'You lost. Try again.';
-        }
-        else {
-            return 'Tie game.';
         }
     }

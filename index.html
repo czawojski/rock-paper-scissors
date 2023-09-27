@@ -5,9 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RockPaperScissors</title>
-    <script src="myScript.js"></script>
+    <script src="myScript.js" defer></script>
 </head>
 <body>
-    
+    <button id="rock" type="button">Rock</button>
+    <button id="paper" type="button">Paper</button>
+    <button id="scissors" type="button">Scissors</button>
+    <div id="result"></div>
+    <div id="playerScore"></div>
+    <div id="computerScore"></div>
 </body>
 </html>
+
+<!--Does the script tag need to go here, at the bottom? Null is not an object on eventlistener because script is running before DOM elements are created-->
